@@ -1,16 +1,17 @@
 import React from 'react';
 import { CardPlayer } from '../CardPlayer/CardPlayer';
+import { sortPlayers, searchPlayers } from '../../utils';
 import styles from './CardPlayerGroup.module.scss';
 
-export const CardPlayerGroup = ({ players, searchPlayers }) => {
+export const CardPlayerGroup = ({ players, searchValue, currentFilter }) => {
   let playersSearch = [...players];
 
-  if (searchPlayers) {
-    playersSearch = [...players].filter((player) => {
-      return player.Player.toLowerCase().startsWith(
-        searchPlayers.toLowerCase()
-      );
-    });
+  if (currentFilter) {
+    playersSearch = sortPlayers(players, currentFilter);
+  }
+
+  if (searchValue) {
+    playersSearch = searchPlayers(playersSearch, searchValue);
   }
 
   return (

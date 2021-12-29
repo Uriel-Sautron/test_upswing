@@ -7,6 +7,7 @@ import {
   IconChipGroup,
 } from './components';
 import Players from './db/players.json';
+import { sortPlayers } from './utils';
 
 const filters = [
   { label: 'Joueur', key: 'Player' },
@@ -26,14 +27,29 @@ const App = () => {
   const [playersData, setPlayersData] = useState([...Players]);
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('');
-  console.log('currentFilter:', currentFilter);
+
+  // This useEffect is called every time the playersData or currentFilter are updated.
+  // useEffect(() => {
+  //   const playersSorted = sortPlayers(Players, currentFilter);
+  //   setPlayersData(playersSorted);
+  // }, [Players, currentFilter]);
 
   return (
     <>
       <Header />
       <SearchBar handleChange={setSearchValue} />
-      <IconChipGroup filters={filters} handleChange={setCurrentFilter} />
-      <CardPlayerGroup players={playersData} searchPlayers={searchValue} />
+      <section>
+        <IconChipGroup
+          filters={filters}
+          currentFilter={currentFilter}
+          handleChange={setCurrentFilter}
+        />
+        <CardPlayerGroup
+          players={playersData}
+          searchValue={searchValue}
+          currentFilter={currentFilter}
+        />
+      </section>
     </>
   );
 };
