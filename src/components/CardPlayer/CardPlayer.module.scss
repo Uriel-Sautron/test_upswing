@@ -1,12 +1,13 @@
 .cardPlayerContainer {
   display: flex;
   flex-direction: column;
-  text-align: center;
+
   align-items: center;
-  width: 80%;
+
+  width: 100%;
   height: 300px;
   padding: 20px 10px;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgb(209, 208, 208);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -16,20 +17,25 @@
 .cardContentBack {
   display: flex;
   width: 100%;
+  height: 80%;
   justify-content: space-between;
   text-align: left;
 
   .cardDetailGroup {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     width: 50%;
     padding-right: 10px;
   }
   .cardDetail {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
   }
 
   .cardDetail :nth-child(1) {
-    width: 70%;
+    width: 80%;
   }
 }
 

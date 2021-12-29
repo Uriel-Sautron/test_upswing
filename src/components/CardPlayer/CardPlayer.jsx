@@ -5,6 +5,7 @@ import styles from './CardPlayer.module.scss';
 export const CardPlayer = ({ player }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  // This function is called when the user clicks on the button card.
   const handleClick = () => {
     setIsFlipped(!isFlipped);
   };
@@ -30,10 +31,14 @@ export const CardPlayer = ({ player }) => {
       className={styles.cardFlip}
     >
       <div className={styles.cardPlayerContainer}>
-        <h2>{Player}</h2>
-        <button onClick={handleClick} type="button">
-          Details
-        </button>
+        <div>
+          <h2>{Player}</h2>
+        </div>
+        <div>
+          <button onClick={handleClick} type="button">
+            Details
+          </button>
+        </div>
       </div>
 
       <div className={styles.cardPlayerContainer}>
@@ -69,8 +74,8 @@ export const CardPlayer = ({ player }) => {
               <p>{TpM || 0}</p>
             </div>
             <div className={styles.cardDetail}>
-              <p>Taux de passes réussies:</p>
-              <p>{PReu || 0}</p>
+              <p>Passes réussies:</p>
+              <p>{PReu || 0}%</p>
             </div>
             <div className={styles.cardDetail}>
               <p>Duels aériens gagnés par match:</p>

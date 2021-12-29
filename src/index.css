@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Reset CSS */
+html {
+  height: 100%;
+}
+
+html,
+body {
+  letter-spacing: -1px;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100%;
+  height: auto;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+li {
+  display: inline;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
