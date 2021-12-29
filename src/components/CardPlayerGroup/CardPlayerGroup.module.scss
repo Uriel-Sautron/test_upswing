@@ -1,0 +1,31 @@
+.CardGroupContainer {
+  margin: 20px 0;
+  width: 100%;
+
+  .card {
+    margin-top: 10px;
+    width: 80%;
+  }
+}
+
+// tablet: 768px
+@media only screen and (min-width: 768px) {
+  .CardGroupContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .card {
+      width: 40%;
+    }
+  }
+}
+
+// medium: 1024px
+@media only screen and (min-width: 1024px) {
+  .CardGroupContainer {
+    .card {
+      width: 30%;
+    }
+  }
+}

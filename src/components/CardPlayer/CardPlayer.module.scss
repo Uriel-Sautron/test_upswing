@@ -1,0 +1,50 @@
+.cardPlayerContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 80%;
+  height: 300px;
+  padding: 20px 10px;
+  justify-content: center;
+  background-color: rgb(209, 208, 208);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.cardContentBack {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: left;
+
+  .cardDetailGroup {
+    width: 50%;
+    padding-right: 10px;
+  }
+  .cardDetail {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cardDetail :nth-child(1) {
+    width: 70%;
+  }
+}
+
+// tablet: 768px
+@media only screen and (min-width: 768px) {
+  .cardPlayerContainer {
+  }
+}
+
+// medium: 1024px
+@media only screen and (min-width: 1024px) {
+  .cardPlayerContainer {
+  }
+}
+
+// large: 1280px
+@media only screen and (min-width: 1280px) {
+}
