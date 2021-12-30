@@ -1,8 +1,11 @@
 .headerContainer {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 
   h1 {
     color: red;
+    font-size: 50px;
+    letter-spacing: 3px;
   }
 }

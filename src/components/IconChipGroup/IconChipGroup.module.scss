@@ -1,0 +1,13 @@
+.ChipGroupContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-right: 40px;
+  width: 20%;
+
+  & > div {
+    margin-top: 20px;
+  }
+}

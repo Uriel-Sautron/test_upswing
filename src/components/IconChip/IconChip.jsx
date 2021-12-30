@@ -15,7 +15,7 @@ export const IconChip = ({ filter, handleChange, currentFilter }) => {
 
   return (
     <Chip
-      icon={isActive ? <ArrowUpwardIcon /> : <HorizontalRuleIcon />}
+      icon={isActive ? <ArrowUpwardIcon /> : null}
       variant="outlined"
       label={label}
       color={isActive ? 'success' : 'default'}
