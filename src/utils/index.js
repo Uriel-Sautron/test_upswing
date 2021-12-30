@@ -28,7 +28,7 @@ export const searchPlayers = (players, searchValue) => {
 
   if (searchValue) {
     playersSearch = [...playersSearch].filter((player) => {
-      return player.Player.toLowerCase().startsWith(searchValue.toLowerCase());
+      return player.Player.toLowerCase().includes(searchValue.toLowerCase());
     });
   }
 

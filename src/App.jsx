@@ -1,56 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import {
-  Header,
-  CardPlayerGroup,
-  SearchBar,
-  IconChipGroup,
-} from './components';
+import React, { useState } from 'react';
+import { Header, CardPlayerGroup, IconChipGroup, NavBar } from './components';
+import { PlayersContext, TeamsContext } from './context';
 import Players from './db/players.json';
-import { sortPlayers } from './utils';
-
-const filters = [
-  { label: 'Joueur', key: 'Player' },
-  { label: 'Match joués', key: 'Apps' },
-  { label: 'Minutes jouées', key: 'Mins' },
-  { label: 'Buts', key: 'Buts' },
-  { label: 'Total Passes décisives', key: 'PDecisives' },
-  { label: 'Carton jaune', key: 'Jau' },
-  { label: 'Carton rouge', key: 'Rou' },
-  { label: 'Tir par match', key: 'TpM' },
-  { label: 'Taux de passes réussies', key: 'PReu' },
-  { label: 'Duels aériens gagnés par match', key: 'AeriensGagnes' },
-  { label: 'Homme du match', key: 'HdM' },
-];
+import styles from './App.module.scss';
 
 const App = () => {
-  const [playersData, setPlayersData] = useState([...Players]);
+  const [playersList, setPlayersList] = useState([...Players]);
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('');
-
-  // This useEffect is called every time the playersData or currentFilter are updated.
-  // useEffect(() => {
-  //   const playersSorted = sortPlayers(Players, currentFilter);
-  //   setPlayersData(playersSorted);
-  // }, [Players, currentFilter]);
+  const [teams, setTeams] = useState({ teams1: [], teams2: [] });
 
   return (
-    <>
-      <Header />
-      <SearchBar handleChange={setSearchValue} />
-      <section>
-        <IconChipGroup
-          filters={filters}
-          currentFilter={currentFilter}
-          handleChange={setCurrentFilter}
-        />
-        <CardPlayerGroup
-          players={playersData}
-          searchValue={searchValue}
-          currentFilter={currentFilter}
-        />
-      </section>
-    </>
+    <PlayersContext.Provider value={{ playersList, setPlayersList }}>
+      <TeamsContext.Provider value={{ teams, setTeams }}>
+        <Header />
+        <NavBar handleSearch={setSearchValue} />
+        <section className={styles.sidebarCard}>
+          <IconChipGroup
+            currentFilter={currentFilter}
+            handleChange={setCurrentFilter}
+          />
+          <CardPlayerGroup
+            searchValue={searchValue}
+            currentFilter={currentFilter}
+          />
+        </section>
+      </TeamsContext.Provider>
+    </PlayersContext.Provider>
   );
 };
 
