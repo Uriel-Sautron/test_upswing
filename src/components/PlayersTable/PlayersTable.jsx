@@ -21,7 +21,6 @@ export const PlayersTable = ({ players }) => {
   const [playersData, setPlayersData] = useState([...players]);
   const [sortBy, setSortBy] = useState({ key: 'Apps', direction: 'desc' });
   const [tHeadSelect, setTHeadSelect] = useState(sortBy.key);
-  console.log('tHeadSelect:', tHeadSelect);
 
   // This useEffect is called every time the playersData or sortBy are updated.
   useEffect(() => {

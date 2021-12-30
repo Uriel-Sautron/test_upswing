@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import { PlayersContext } from '../../context';
+import styles from './FormModal.module.scss';
 
 const style = {
   position: 'absolute',
@@ -15,6 +17,8 @@ const style = {
   border: '1px solid #000',
   boxShadow: 24,
   p: 4,
+  display: 'flex',
+  flexDirection: 'column',
 };
 
 const inputLabel = [
@@ -41,6 +45,7 @@ export const FormModal = () => {
   const handleAddPlayer = (e) => {
     e.preventDefault();
     const newPlayer = {
+      id: uuidv4(),
       Player: e.target.Player.value,
       Apps: e.target.Apps.value,
       Mins: e.target.Mins.value,
@@ -59,7 +64,7 @@ export const FormModal = () => {
   };
 
   return (
-    <div>
+    <div className={styles.formModalContainer}>
       <Button onClick={handleOpen}>Ajouter un joueur</Button>
       <Modal
         open={open}
@@ -68,14 +73,21 @@ export const FormModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form action="" onSubmit={(e) => handleAddPlayer(e)}>
+          <form
+            action=""
+            onSubmit={(e) => handleAddPlayer(e)}
+            className={styles.formContainer}
+          >
             {inputLabel &&
               inputLabel.map((label) => (
                 <TextField
+                  required
                   variant="standard"
+                  label={label.key}
                   id={label.key}
                   placeholder={label.label}
-                  key={label.key}
+                  margin="normal"
+                  key={uuidv4()}
                 />
               ))}
             <Button type="submit" variant="contained" color="success">

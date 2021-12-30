@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CardPlayer } from '../CardPlayer/CardPlayer';
 import { sortPlayers, searchPlayers } from '../../utils';
+import { PlayersContext } from '../../context';
 import styles from './CardPlayerGroup.module.scss';
 
-export const CardPlayerGroup = ({ players, searchValue, currentFilter }) => {
-  let playersSearch = [...players];
+export const CardPlayerGroup = ({ searchValue, currentFilter }) => {
+  const { playersList } = useContext(PlayersContext);
+  let playersSearch = [...playersList];
 
   if (currentFilter) {
-    playersSearch = sortPlayers(players, currentFilter);
+    playersSearch = sortPlayers(playersList, currentFilter);
   }
 
   if (searchValue) {

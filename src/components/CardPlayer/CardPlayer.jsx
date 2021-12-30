@@ -1,16 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ReactCardFlip from 'react-card-flip';
+import Button from '@mui/material/Button';
+import { PlayersContext, TeamsContext } from '../../context';
 import styles from './CardPlayer.module.scss';
 
 export const CardPlayer = ({ player }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const { playersList, setPlayersList } = useContext(PlayersContext);
+  const { teams, setTeams } = useContext(TeamsContext);
 
   // This function is called when the user clicks on the button card.
   const handleClick = () => {
     setIsFlipped(!isFlipped);
   };
 
+  // This function is called when the user clicks on the button delete.
+  const handleDeletePlayer = (idPlayer) => {
+    const newPlayersList = playersList.filter((p) => p.id !== idPlayer);
+    setPlayersList(newPlayersList);
+  };
+
+  const handleSelectTeam = (team, idPlayer) => {
+    const newTeams = { ...teams };
+    const newPlayer = playersList.find((p) => p.id === idPlayer);
+    newTeams[team].push(newPlayer);
+    setTeams(newTeams);
+    handleDeletePlayer(idPlayer);
+  };
+
   const {
+    id,
     Player,
     Apps,
     Mins,
@@ -34,10 +53,33 @@ export const CardPlayer = ({ player }) => {
         <div>
           <h2>{Player}</h2>
         </div>
+        <div className={styles.teamButton}>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => handleSelectTeam('team1', id)}
+          >
+            Equipe 1
+          </Button>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => handleSelectTeam('team2', id)}
+          >
+            Equipe 2
+          </Button>
+        </div>
         <div>
-          <button onClick={handleClick} type="button">
+          <Button onClick={handleClick} variant="contained" color="success">
             Details
-          </button>
+          </Button>
+          <Button
+            onClick={() => handleDeletePlayer(id)}
+            color="error"
+            size="small"
+          >
+            Supprimer
+          </Button>
         </div>
       </div>
 
@@ -92,9 +134,9 @@ export const CardPlayer = ({ player }) => {
           </div>
         </div>
 
-        <button onClick={handleClick} type="button">
+        <Button onClick={handleClick} variant="contained" color="success">
           Retour
-        </button>
+        </Button>
       </div>
     </ReactCardFlip>
   );
