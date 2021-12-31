@@ -1,0 +1,10 @@
+.avatarChipGroupContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    margin-top: 10px;
+  }
+}

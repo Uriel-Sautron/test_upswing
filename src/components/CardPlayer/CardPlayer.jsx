@@ -28,6 +28,8 @@ export const CardPlayer = ({ player }) => {
     handleDeletePlayer(idPlayer);
   };
 
+  const teamIsFull = (team) => teams[team].length === 11;
+
   const {
     id,
     Player,
@@ -55,6 +57,7 @@ export const CardPlayer = ({ player }) => {
         </div>
         <div className={styles.teamButton}>
           <Button
+            disabled={teamIsFull('team1')}
             variant="outlined"
             color="primary"
             onClick={() => handleSelectTeam('team1', id)}
@@ -62,6 +65,7 @@ export const CardPlayer = ({ player }) => {
             Equipe 1
           </Button>
           <Button
+            disabled={teamIsFull('team2')}
             variant="outlined"
             color="error"
             onClick={() => handleSelectTeam('team2', id)}

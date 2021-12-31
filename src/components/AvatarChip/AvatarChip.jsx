@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
+import { TeamsContext, PlayersContext } from '../../context';
 
-export const AvatarChip = ({ player }) => {
-  return <Chip avatar={player.Player[0]} label={player.Player} />;
+export const AvatarChip = ({ player, teamName }) => {
+  const { teams, setTeams } = useContext(TeamsContext);
+  const { playersList, setPlayersList } = useContext(PlayersContext);
+
+  // This function is called when the user clicks on the cross Chip. It removes the player from the team and adds it to the players list.
+  const handleDelete = () => {
+    const team = [...teams[teamName]];
+    const newTeam = team.filter((p) => p.id !== player.id);
+    const newTeams = { ...teams, [teamName]: newTeam };
+    setTeams(newTeams);
+    setPlayersList([...playersList, player]);
+  };
+
+  return (
+    <Chip
+      avatar={<Avatar>{player.Player[0]}</Avatar>}
+      label={player.Player}
+      onDelete={handleDelete}
+    />
+  );
 };

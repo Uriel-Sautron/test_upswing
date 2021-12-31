@@ -10,3 +10,4 @@ export { NavBar } from './NavBar/NavBar';
 export { FormModal } from './FormModal/FormModal';
 export { AvatarChip } from './AvatarChip/AvatarChip';
 export { AvatarChipGroup } from './AvatarChipGroup/AvatarChipGroup';
+export { TeamsDisplay } from './TeamsDisplay/TeamsDisplay';

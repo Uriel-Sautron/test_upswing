@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Header, CardPlayerGroup, IconChipGroup, NavBar } from './components';
+import {
+  Header,
+  CardPlayerGroup,
+  IconChipGroup,
+  NavBar,
+  TeamsDisplay,
+} from './components';
 import { PlayersContext, TeamsContext } from './context';
 import Players from './db/players.json';
 import styles from './App.module.scss';
@@ -12,7 +18,6 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('');
   const [teams, setTeams] = useState({ team1: [], team2: [] });
-  console.log('teams:', teams);
 
   return (
     <PlayersContext.Provider value={{ playersList, setPlayersList }}>
@@ -29,6 +34,7 @@ const App = () => {
             currentFilter={currentFilter}
           />
         </section>
+        <TeamsDisplay teams={teams} />
       </TeamsContext.Provider>
     </PlayersContext.Provider>
   );
