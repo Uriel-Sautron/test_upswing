@@ -9,3 +9,4 @@ export { IconChipGroup } from './IconChipGroup/IconChipGroup';
 export { NavBar } from './NavBar/NavBar';
 export { FormModal } from './FormModal/FormModal';
 export { AvatarChip } from './AvatarChip/AvatarChip';
+export { AvatarChipGroup } from './AvatarChipGroup/AvatarChipGroup';
