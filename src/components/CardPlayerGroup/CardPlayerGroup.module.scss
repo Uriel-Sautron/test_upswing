@@ -15,18 +15,25 @@
 @media only screen and (min-width: 768px) {
   .CardGroupContainer {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    .card {
-      width: 40%;
-    }
+    justify-content: center;
   }
 }
 
 // medium: 1024px
 @media only screen and (min-width: 1024px) {
+  .CardGroupContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .card {
+      width: 45%;
+    }
+  }
+}
+
+// large: 1280px
+@media only screen and (min-width: 1280px) {
   .CardGroupContainer {
     .card {
       width: 30%;

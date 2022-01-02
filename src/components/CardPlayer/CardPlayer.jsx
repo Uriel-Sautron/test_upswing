@@ -1,8 +1,12 @@
 import React, { useState, useContext } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import Button from '@mui/material/Button';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { PlayersContext, TeamsContext } from '../../context';
+import { ReactComponent as TeamRedIcon } from '../../icons/team_red.svg';
+import { ReactComponent as TeamBlueIcon } from '../../icons/team_blue.svg';
 import styles from './CardPlayer.module.scss';
+import ballon from '../../img/ballon.png';
 
 export const CardPlayer = ({ player }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -52,37 +56,46 @@ export const CardPlayer = ({ player }) => {
       className={styles.cardFlip}
     >
       <div className={styles.cardPlayerContainer}>
-        <div>
-          <h2>{Player}</h2>
-        </div>
+        <Button
+          onClick={() => handleDeletePlayer(id)}
+          color="error"
+          size="small"
+        >
+          <DeleteForeverIcon />
+        </Button>
+
+        <img src={ballon} alt="Ballon de foot" height="150px" width="150px" />
+
+        {/* Buttons choice teams */}
         <div className={styles.teamButton}>
           <Button
             disabled={teamIsFull('team1')}
-            variant="outlined"
             color="primary"
             onClick={() => handleSelectTeam('team1', id)}
           >
-            Equipe 1
+            <TeamBlueIcon />
           </Button>
           <Button
             disabled={teamIsFull('team2')}
-            variant="outlined"
             color="error"
             onClick={() => handleSelectTeam('team2', id)}
           >
-            Equipe 2
+            <TeamRedIcon />
           </Button>
         </div>
-        <div>
-          <Button onClick={handleClick} variant="contained" color="success">
-            Details
-          </Button>
+        <div className={styles.cardPlayerName}>
+          <h2>{Player}</h2>
+        </div>
+        <div className={styles.buttonBottom}>
           <Button
-            onClick={() => handleDeletePlayer(id)}
-            color="error"
-            size="small"
+            onClick={handleClick}
+            variant="contained"
+            style={{
+              background:
+                'linear-gradient(to left top, rgba(141,124,74,1) 50%, rgba(255,255,255,1) 100%)',
+            }}
           >
-            Supprimer
+            Details
           </Button>
         </div>
       </div>
@@ -138,7 +151,14 @@ export const CardPlayer = ({ player }) => {
           </div>
         </div>
 
-        <Button onClick={handleClick} variant="contained" color="success">
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          style={{
+            background:
+              'linear-gradient(to left top, rgba(141,124,74,1) 50%, rgba(255,255,255,1) 100%)',
+          }}
+        >
           Retour
         </Button>
       </div>

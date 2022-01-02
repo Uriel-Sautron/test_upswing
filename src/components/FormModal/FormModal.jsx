@@ -65,7 +65,14 @@ export const FormModal = () => {
 
   return (
     <div className={styles.formModalContainer}>
-      <Button onClick={handleOpen}>Ajouter un joueur</Button>
+      <Button
+        onClick={handleOpen}
+        style={{
+          color: '#fff',
+        }}
+      >
+        Ajouter un joueur
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
