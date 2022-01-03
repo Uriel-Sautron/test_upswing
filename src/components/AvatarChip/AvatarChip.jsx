@@ -9,9 +9,12 @@ export const AvatarChip = ({ player, teamName }) => {
 
   // This function is called when the user clicks on the cross Chip. It removes the player from the team and adds it to the players list.
   const handleDelete = () => {
-    const team = [...teams[teamName]];
+    const team = [...teams[teamName].team];
     const newTeam = team.filter((p) => p.id !== player.id);
-    const newTeams = { ...teams, [teamName]: newTeam };
+    const newTeams = {
+      ...teams,
+      [teamName]: { ...teams[teamName], team: newTeam },
+    };
     setTeams(newTeams);
     setPlayersList([...playersList, player]);
   };
@@ -21,6 +24,9 @@ export const AvatarChip = ({ player, teamName }) => {
       avatar={<Avatar>{player.Player[0]}</Avatar>}
       label={player.Player}
       onDelete={handleDelete}
+      style={{
+        fontSize: '18px',
+      }}
     />
   );
 };

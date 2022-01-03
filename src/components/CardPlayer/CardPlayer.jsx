@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import Button from '@mui/material/Button';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { deletePlayer } from '../../utils';
 import { PlayersContext, TeamsContext } from '../../context';
 import { ReactComponent as TeamRedIcon } from '../../icons/team_red.svg';
 import { ReactComponent as TeamBlueIcon } from '../../icons/team_blue.svg';
@@ -20,19 +21,19 @@ export const CardPlayer = ({ player }) => {
 
   // This function is called when the user clicks on the button delete.
   const handleDeletePlayer = (idPlayer) => {
-    const newPlayersList = playersList.filter((p) => p.id !== idPlayer);
+    const newPlayersList = deletePlayer(playersList, idPlayer);
     setPlayersList(newPlayersList);
   };
 
-  const handleSelectTeam = (team, idPlayer) => {
+  const handleSelectTeam = (teamSelect, idPlayer) => {
     const newTeams = { ...teams };
     const newPlayer = playersList.find((p) => p.id === idPlayer);
-    newTeams[team].push(newPlayer);
+    newTeams[teamSelect].team.push(newPlayer);
     setTeams(newTeams);
     handleDeletePlayer(idPlayer);
   };
 
-  const teamIsFull = (team) => teams[team].length === 11;
+  const teamIsFull = (teamSelect) => teams[teamSelect].team.length === 11;
 
   const {
     id,

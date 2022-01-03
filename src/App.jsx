@@ -17,7 +17,10 @@ const App = () => {
   const [playersList, setPlayersList] = useState([...playersWithId]);
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('');
-  const [teams, setTeams] = useState({ team1: [], team2: [] });
+  const [teams, setTeams] = useState({
+    team1: { name: 'Equipe 1', team: [], score: 0 },
+    team2: { name: 'Equipe 2', team: [], score: 0 },
+  });
 
   return (
     <PlayersContext.Provider value={{ playersList, setPlayersList }}>
