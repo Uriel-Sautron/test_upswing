@@ -6,6 +6,7 @@ import {
   IconChipGroup,
   NavBar,
   TeamsDisplay,
+  Footer,
 } from './components';
 import { PlayersContext, TeamsContext } from './context';
 import Players from './db/players.json';
@@ -38,6 +39,7 @@ const App = () => {
           />
         </section>
         <TeamsDisplay teams={teams} />
+        <Footer />
       </TeamsContext.Provider>
     </PlayersContext.Provider>
   );

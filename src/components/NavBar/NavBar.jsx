@@ -8,7 +8,7 @@ import styles from './NavBar.module.scss';
 export const NavBar = ({ handleSearch }) => {
   const { playersList, setPlayersList } = useContext(PlayersContext);
   const { teams, setTeams } = useContext(TeamsContext);
-
+  const teamsIsPossible = playersList.length >= 22;
   const createTeams = (players) => {
     const playersShuffled = shuffleArray(players);
     const team1 = [];
@@ -39,9 +39,8 @@ export const NavBar = ({ handleSearch }) => {
   return (
     <nav className={styles.navBarContainer}>
       <SearchBar handleSearch={handleSearch} />
-      {playersList.lengt < 22 && (
+      {teamsIsPossible && (
         <Button
-          disabled={playersList.length < 22}
           onClick={() => createTeams(playersList)}
           style={{
             color: '#fff',
