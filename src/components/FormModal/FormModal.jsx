@@ -69,6 +69,7 @@ export const FormModal = () => {
         onClick={handleOpen}
         style={{
           color: '#fff',
+          fontSize: '20px',
         }}
       >
         Ajouter un joueur

@@ -12,7 +12,7 @@ export const SearchBar = ({ handleSearch }) => {
     <div className={styles.searchBar}>
       <input
         type="text"
-        placeholder="Rechercher un joueur"
+        placeholder="Joueur"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />

@@ -1,7 +1,5 @@
 import React from 'react';
 import Chip from '@mui/material/Chip';
-import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export const IconChip = ({ filter, handleChange, currentFilter }) => {
@@ -16,10 +14,13 @@ export const IconChip = ({ filter, handleChange, currentFilter }) => {
   return (
     <Chip
       icon={isActive ? <ArrowUpwardIcon /> : null}
-      variant="outlined"
       label={label}
       color={isActive ? 'success' : 'default'}
       onClick={handleClick}
+      style={{
+        backgroundColor: 'rgb(255, 255, 255, 0.7)',
+        fontSize: '18px',
+      }}
     />
   );
 };

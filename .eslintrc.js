@@ -18,6 +18,8 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'no-plusplus': 'off',
+    'no-restricted-syntax': 'off',
     skipBlankLines: 'off',
     'no-console': 'off',
     'padded-blocks': 0,
