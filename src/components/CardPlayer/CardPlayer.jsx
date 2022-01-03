@@ -25,6 +25,7 @@ export const CardPlayer = ({ player }) => {
     setPlayersList(newPlayersList);
   };
 
+  // This function is called when the user clicks on the button team1 or team2.
   const handleSelectTeam = (teamSelect, idPlayer) => {
     const newTeams = { ...teams };
     const newPlayer = playersList.find((p) => p.id === idPlayer);

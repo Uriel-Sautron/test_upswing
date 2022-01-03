@@ -5,7 +5,7 @@ import styles from './TeamsDisplay.module.scss';
 
 export const TeamsDisplay = ({ teams }) => {
   const { team1, team2 } = teams;
-  const teamsIsFull = team1.team.length === 5 && team2.team.length === 5;
+  const teamsIsFull = team1.team.length === 11 && team2.team.length === 11;
   let teamWin = '';
   if (teamsIsFull) {
     teamWin = checkWin(team1.team, team2.team);
@@ -18,7 +18,7 @@ export const TeamsDisplay = ({ teams }) => {
           <AvatarChipGroup team={[...team1.team]} teamName="team1" />
         </div>
         {teamsIsFull && (
-          <div>
+          <div className={styles.winContainer}>
             <h2>{teamWin === 'Egalité' ? '' : 'Vainqueur'}</h2>
             <h2>{teamWin}</h2>
           </div>

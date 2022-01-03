@@ -5,7 +5,9 @@ import { PlayersContext } from '../../context';
 import styles from './CardPlayerGroup.module.scss';
 
 export const CardPlayerGroup = ({ searchValue, currentFilter }) => {
+  // Call playersList from Context
   const { playersList } = useContext(PlayersContext);
+
   let playersSearch = [...playersList];
 
   if (currentFilter) {

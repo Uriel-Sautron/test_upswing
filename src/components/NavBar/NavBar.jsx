@@ -6,10 +6,14 @@ import { shuffleArray } from '../../utils';
 import styles from './NavBar.module.scss';
 
 export const NavBar = ({ handleSearch }) => {
+  // Call playersList and teams from Context
   const { playersList, setPlayersList } = useContext(PlayersContext);
   const { teams, setTeams } = useContext(TeamsContext);
+
   const teamsIsPossible = playersList.length >= 22;
-  const createTeams = (players) => {
+
+  // Function handleCreateTeams takes as input an array of players. It creates 2 random teams of 11 players and remove the chosen players from the playersList.
+  const handleCreateTeams = (players) => {
     const playersShuffled = shuffleArray(players);
     const team1 = [];
     const team2 = [];
@@ -25,6 +29,7 @@ export const NavBar = ({ handleSearch }) => {
       }
     });
 
+    // playersListFiltered is an array without the players that are in the teams.
     const playersListFiltered = playersList.filter(
       (player) => teamsIds.includes(player.id) === false
     );
@@ -41,7 +46,7 @@ export const NavBar = ({ handleSearch }) => {
       <SearchBar handleSearch={handleSearch} />
       {teamsIsPossible && (
         <Button
-          onClick={() => createTeams(playersList)}
+          onClick={() => handleCreateTeams(playersList)}
           style={{
             color: '#fff',
             fontSize: '20px',

@@ -12,6 +12,7 @@ import { PlayersContext, TeamsContext } from './context';
 import Players from './db/players.json';
 import styles from './App.module.scss';
 
+// Add id to player
 const playersWithId = Players.map((player) => ({ ...player, id: uuidv4() }));
 
 const App = () => {
@@ -26,8 +27,11 @@ const App = () => {
   return (
     <PlayersContext.Provider value={{ playersList, setPlayersList }}>
       <TeamsContext.Provider value={{ teams, setTeams }}>
+        {/* Top App */}
         <Header />
         <NavBar handleSearch={setSearchValue} />
+
+        {/* Main App */}
         <section className={styles.sidebarCard}>
           <IconChipGroup
             currentFilter={currentFilter}
@@ -39,6 +43,8 @@ const App = () => {
           />
         </section>
         <TeamsDisplay teams={teams} />
+
+        {/* Bottom App */}
         <Footer />
       </TeamsContext.Provider>
     </PlayersContext.Provider>
