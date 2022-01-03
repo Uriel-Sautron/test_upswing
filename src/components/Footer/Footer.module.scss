@@ -1,0 +1,16 @@
+.footerContainer {
+  margin-top: auto;
+  background-color: rgb(26, 58, 102, 0.7);
+  height: 70px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+  span {
+    color: #8d7c4a;
+    margin: 0 20px;
+    font-size: 30px;
+  }
+}
